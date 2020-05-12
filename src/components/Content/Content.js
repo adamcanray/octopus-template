@@ -4,7 +4,7 @@ import cx from 'classnames';
 class Content extends Component {
   render() {
     return (
-      <div className={cx("w-3/4","bg-red-500")}>
+      <div className={cx("w-full","bg-red-500")}>
         i am content
       </div>
     )

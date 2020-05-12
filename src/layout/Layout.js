@@ -1,4 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 // layout
 import Header from './Header/Header';
 import Body from './Body/Body';
@@ -9,7 +15,16 @@ class Layout extends Component {
     return (
       <div>
         <Header />
-        <Body />
+          <Switch>
+            <Route exact path="/">
+              <Body/>
+            </Route>
+            <Route path="*">
+              <div>
+                404
+              </div>
+            </Route>
+          </Switch>
         <Footer />
       </div>
     )

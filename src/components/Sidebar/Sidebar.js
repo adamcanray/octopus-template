@@ -6,7 +6,7 @@ import './Sidebar.scss';
 class Sidebar extends Component {
   render() {
     return (
-      <div className={cx("w-1/4","bg-yellow-500")}>
+      <div className={cx("w-64","bg-yellow-500")}>
         i am sidebar
       </div>
     )

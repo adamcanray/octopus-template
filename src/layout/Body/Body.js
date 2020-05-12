@@ -6,7 +6,7 @@ import Content from '../../components/Content/Content';
 class Body extends Component {
   render(){
     return (
-      <div className={cx("flex","bg-blue-500")}>
+      <div className={cx("flex","min-h-screen")}>
         <Sidebar />
         <Content />
       </div>
