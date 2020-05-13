@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
-import './LandingPage.scss';
+import cx from 'classnames'
+import './LandingPage.scss'
+import Sidebar from '../../components/Sidebar/Sidebar'
+import {pageWithSidebar} from '../mock.cssconfig'
 
 export default class LandingPage extends Component {
   render() {
     return (
-      <div>
-        <div>
-          <h1 className="text-blue-700">
-            i am body
-          </h1>
+      <div className={cx(pageWithSidebar)}>
+        <Sidebar />
+        <div className={cx("w-full","bg-red-400")}>
+          <div className={cx("container")}>
+            <h1>
+              i am landing page
+            </h1>
+          </div>
         </div>
       </div>
     )

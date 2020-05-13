@@ -149,6 +149,9 @@ module.exports = {
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
+      '72': '18rem',
+      '84': '21rem',
+      '96': '24rem',
     },
     backgroundColor: theme => theme('colors'),
     backgroundOpacity: theme => theme('opacity'),
@@ -202,7 +205,13 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: '0'
+      padding: {
+        default: '1rem',
+        sm: '1rem',
+        md: '1.5rem',
+        lg: '2rem',
+        xl: '2.5rem',
+      },
     },
     cursor: {
       auto: 'auto',

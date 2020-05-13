@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import s from './Navbar.scss';
-import cx from 'classnames';
+import cx from 'classnames'
+import {Link} from 'react-router-dom'
+
+import s from './Navbar.scss'
 
 
 class Navbar extends Component {
@@ -28,15 +30,15 @@ class Navbar extends Component {
           </div>
           <div className={cx({"block":this.state.collapse,"hidden":!this.state.collapse},"w-full block flex-grow md:flex md:items-center md:w-auto")}>
             <div className="text-sm md:flex-grow">
-              <a href="#responsive-header" className="block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white mr-4">
+              <Link to="/app/home" className="block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white mr-4">
                 Home
-              </a>
-              <a href="#responsive-header" className="block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white mr-4">
+              </Link>
+              <Link to="/app/contact" className="block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white mr-4">
                 Contact
-              </a>
-              <a href="#responsive-header" className="block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white">
+              </Link>
+              <Link to="/app/about" className="block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white">
                 About
-              </a>
+              </Link>
             </div>
             <div>
               {/* <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 md:mt-0">Download</a> */}

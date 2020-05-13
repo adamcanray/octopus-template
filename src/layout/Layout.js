@@ -1,14 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
-} from "react-router-dom";
+  Redirect
+} from "react-router-dom"
 // layout
-import Header from './Header/Header';
-import Body from './Body/Body';
-import Footer from './Footer/Footer';
+import Header from './Header/Header'
+import Body from './Body/Body'
+import Footer from './Footer/Footer'
+
+const PrivateRoute = ({ dispatch, component, ...rest }) => {
+  // if (!Login.isAuthenticated(localStorage.getItem("token"))) {
+  //   dispatch(logoutUser());
+  //   localStorage.removeItem("token");
+  //   return <Redirect to="/login" />;
+  // } else {
+    return (
+      <Route
+        {...rest}
+        render={props => React.createElement(component, props)}
+      />
+    );
+  // }
+};
+
 
 class Layout extends Component {
   render() {
@@ -16,10 +32,13 @@ class Layout extends Component {
       <div>
         <Header />
           <Switch>
-            <Route exact path="/">
-              <Body/>
-            </Route>
-            <Route path="*">
+            <Route exact path="/" render={() => <Redirect to="/app" />} />
+            <PrivateRoute
+              path="/app"
+              dispatch={this.props.dispatch}
+              component={Body}
+            />
+            <Route exact path="*">
               <div>
                 404
               </div>
