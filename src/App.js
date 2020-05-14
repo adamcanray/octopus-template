@@ -1,9 +1,9 @@
-import React from 'react';
-import Layout from './layout/Layout';
+import React from 'react'
+import Layout from './layout/Layout'
 
 function App() {
   return (
-    <div>
+    <div className="box-border">
       <Layout/>
     </div>
   );

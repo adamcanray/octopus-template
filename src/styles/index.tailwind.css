@@ -1,3 +1,38 @@
+/* 
+* Utilities Tailwindcss
+* 
+*/
+
 @tailwind base;
+
+
 @tailwind components;
+/*  
+* Custom Utilities
+* Button based on design
+*
+*/
+.btn {
+  @apply py-2 px-8 rounded-lg;
+}
+.btn-full-rounded {
+  @apply rounded-full flex w-24 h-10 items-center justify-center;
+}
+.btn-kategori {
+  @apply bg-c_gray_5 text-black font-normal text-c_text_sz_body rounded-lg flex w-32 h-10 items-center justify-center;
+}
+.btn-kategori:hover {
+  @apply bg-c_gray_4;
+}
+.btn-masuk{
+  @apply btn-full-rounded border-2 border-c_orange_4 font-normal text-c_text_sz_body;
+}
+.btn-daftar{
+  @apply btn-full-rounded bg-c_orange_4 font-normal text-c_text_sz_body text-white;
+}
+
+.form-search-wrap{
+  @apply bg-c_gray_5 rounded-lg font-normal text-c_text_sz_body;
+}
+
 @tailwind utilities;

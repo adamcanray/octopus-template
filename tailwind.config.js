@@ -1,3 +1,6 @@
+const plugin = require('tailwindcss/plugin')
+const mock = require('./mock.cssconfig')
+
 module.exports = {
   purge: [],
   target: 'relaxed',
@@ -12,12 +15,45 @@ module.exports = {
       xl: '1280px',
     },
     colors: {
+      /*
+      * Custom Colors
+      * Mocking based on design
+      * the name/key below become a classnames
+      * 
+      */
+      c_blue_1: mock.c_blue_1,
+      c_blue_2: mock.c_blue_2,
+      c_blue_3: mock.c_blue_3,
+      c_blue_4: mock.c_blue_4,
+      c_blue_5: mock.c_blue_5,
+
+      c_orange_1: mock.c_orange_1,
+      c_orange_2: mock.c_orange_2,
+      c_orange_3: mock.c_orange_3,
+      c_orange_4: mock.c_orange_4,
+      c_orange_5: mock.c_orange_5,
+
+      c_green_1: mock.c_green_1,
+      c_green_2: mock.c_green_2,
+      c_green_3: mock.c_green_3,
+      c_green_4: mock.c_green_4,
+      c_green_5: mock.c_green_5,
+
+      c_gray_1: mock.c_gray_1,
+      c_gray_2: mock.c_gray_2,
+      c_gray_3: mock.c_gray_3,
+      c_gray_4: mock.c_gray_4,
+      c_gray_5: mock.c_gray_5,
+
+
+      /*
+      * Default Colors
+      *
+      */
       transparent: 'transparent',
       current: 'currentColor',
-
       black: '#000',
       white: '#fff',
-
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -206,11 +242,15 @@ module.exports = {
     container: {
       center: true,
       padding: {
+        /* 
+        * Custom Container Padding
+        * based on design
+        */
         default: '1rem',
-        sm: '1rem',
-        md: '1.5rem',
-        lg: '2rem',
-        xl: '2.5rem',
+        sm: mock.c_container_p_on_sm,
+        md: mock.c_container_p_on_md,
+        lg: mock.c_container_p_on_lg,
+        xl: mock.c_container_p_on_xl,
       },
     },
     cursor: {
@@ -243,6 +283,22 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
+      /*
+      * Custom Font Family
+      * Mocking based on design
+      * the name/key below become a classnames
+      * 
+      */
+      // c_font_family_sans: [
+      //   mock.c_font_family_sans_serif_1
+      // ],
+
+      /*
+      * Default Font Family
+      * Mocking based on design
+      * the name/key below become a classnames
+      * 
+      */
       sans: [
         'system-ui',
         '-apple-system',
@@ -262,6 +318,24 @@ module.exports = {
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
     },
     fontSize: {
+      /*
+      * Custom Font Size
+      * Mocking based on design
+      * the name/key below become a classnames
+      * 
+      */
+      c_text_sz_caption: mock.c_text_sz_caption,
+      c_text_sz_body: mock.c_text_sz_body,
+      c_text_sz_h_small: mock.c_text_sz_h_small,
+      c_text_sz_h_reguler: mock.c_text_sz_h_reguler,
+      c_text_sz_h_large: mock.c_text_sz_h_large,
+      c_text_sz_h_xlarge: mock.c_text_sz_h_xlarge,
+      /*
+      * Default Font Size
+      * Mocking based on design
+      * the name/key below become a classnames
+      * 
+      */
       xs: '0.75rem',
       sm: '0.875rem',
       base: '1rem',
@@ -652,7 +726,7 @@ module.exports = {
     borderOpacity: ['responsive', 'hover', 'focus'],
     borderRadius: ['responsive'],
     borderStyle: ['responsive'],
-    borderWidth: ['responsive'],
+    borderWidth: ['responsive', 'hover'],
     boxShadow: ['responsive', 'hover', 'focus'],
     boxSizing: ['responsive'],
     cursor: ['responsive'],
@@ -735,5 +809,23 @@ module.exports = {
     transitionDelay: ['responsive'],
   },
   corePlugins: {},
-  plugins: [],
+  plugins: [
+    /*
+    * Custom Plugins
+    * Mocking based on design
+    * the name/key below become a classnames
+    */ 
+    plugin(function({ addComponents }) {
+      addComponents({
+        '@variants responsive, hover': {
+          // '.btn': {
+          //   padding: '.5rem 1rem !important',
+          //   borderRadius: '.25rem !important',
+          //   fontWeight: '600 !important',
+          // },
+          // ...
+        }
+      })
+    })
+  ],
 }

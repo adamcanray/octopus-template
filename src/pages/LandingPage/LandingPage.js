@@ -9,7 +9,7 @@ export default class LandingPage extends Component {
     return (
       <div className={cx(pageWithSidebar)}>
         <Sidebar />
-        <div className={cx("w-full","bg-red-400")}>
+        <div className={cx("w-full","")}>
           <div className={cx("container")}>
             <h1>
               i am landing page
