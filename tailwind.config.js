@@ -188,6 +188,13 @@ module.exports = {
       '72': '18rem',
       '84': '21rem',
       '96': '24rem',
+
+      /*
+      * Slider Image Style
+      *
+      */
+      c_slider_image_wrap_width: mock.c_slider_image_wrap_width,
+      c_slider_image_wrap_height: mock.c_slider_image_wrap_height,
     },
     backgroundColor: theme => theme('colors'),
     backgroundOpacity: theme => theme('opacity'),
@@ -367,6 +374,32 @@ module.exports = {
     inset: {
       '0': '0',
       auto: 'auto',
+      /*
+      * Custom inset (bottom/top/left/right on absolute position)
+      * Mocking based on design
+      * paste from 'spacing'
+      * 
+     */
+      '1': '0.25rem',
+      '2': '0.5rem',
+      '3': '0.75rem',
+      '4': '1rem',
+      '5': '1.25rem',
+      '6': '1.5rem',
+      '8': '2rem',
+      '10': '2.5rem',
+      '12': '3rem',
+      '16': '4rem',
+      '20': '5rem',
+      '24': '6rem',
+      '32': '8rem',
+      '40': '10rem',
+      '48': '12rem',
+      '56': '14rem',
+      '64': '16rem',
+      '72': '18rem',
+      '84': '21rem',
+      '96': '24rem',
     },
     letterSpacing: {
       tighter: '-0.05em',
@@ -818,12 +851,99 @@ module.exports = {
     plugin(function({ addComponents }) {
       addComponents({
         '@variants responsive, hover': {
-          // '.btn': {
-          //   padding: '.5rem 1rem !important',
-          //   borderRadius: '.25rem !important',
-          //   fontWeight: '600 !important',
-          // },
-          // ...
+          /*
+          * Custom wrap class for slide
+          * variant for every Screen Sizes
+          *
+          */
+          '.c_slide_wrap_xl':{
+            display: 'flex !important',
+            justifyContent: 'center',
+            maxWidth: '600px !important',
+            width: '100% !important',
+          },
+          '.c_slide_wrap_xl img':{
+            width: '90% !important',
+          },
+          '.c_slide_wrap_lg':{
+            display: 'flex !important',
+            justifyContent: 'center',
+            maxWidth: '600px !important',
+            width: '100% !important',
+          },
+          '.c_slide_wrap_lg img':{
+            width: '90% !important',
+          },
+          '.c_slide_wrap_md':{
+            display: 'flex !important',
+            justifyContent: 'center',
+            maxWidth: '600px !important',
+            width: '100% !important',
+          },
+          '.c_slide_wrap_md img':{
+            width: '90% !important',
+          },
+          '.c_slide_wrap_sm':{
+            display: 'flex !important',
+            justifyContent: 'center',
+            maxWidth: '600px !important',
+            width: '100% !important',
+          },
+          '.c_slide_wrap_sm img':{
+            width: '90% !important',
+          },
+          /*
+          * Default
+          * default call after sm Screen, 
+          * - if used all screen(xl-sm),
+          *   or there are conditions that are not met.
+          * *
+          */ 
+          '.c_slide_wrap_default':{
+            // display: 'flex !important',
+            // justifyContent: 'center',
+            // maxWidth: '600px !important',
+            // width: '100% !important',
+            // background: 'black'
+          },
+          '.c_slide_wrap_default img':{
+            width: '100% !important',
+          },
+          /* 
+          * Override .slick-current (class default from react-slick)
+          * Scss
+          * 
+          */
+          '.slick-current':{
+            /*
+            * if element have class .slick-current, then override style on class .c_slide_wrap_<screen-size>
+            *
+            */
+            '.c_slide_wrap_xl':{
+              // maxHeight: '250px !important',
+            },
+            '.c_slide_wrap_xl img':{
+              width: '100% !important',
+            },
+            '.c_slide_wrap_lg':{
+              // maxHeight: '230px !important',
+            },
+            '.c_slide_wrap_lg img':{
+              width: '100% !important',
+            },
+            '.c_slide_wrap_md':{
+              // maxHeight: '210px !important',
+            },
+            '.c_slide_wrap_md img':{
+              width: '100% !important',
+            },
+            '.c_slide_wrap_sm':{
+              // maxHeight: '190px !important',
+            },
+            '.c_slide_wrap_sm img':{
+              width: '100% !important',
+            },
+          }
         }
       })
     })

@@ -77,6 +77,13 @@ const c_text_sz_h_xlarge = pxToRem(36)
 const c_font_family_sans_serif_1 = '"Source Sans Pro"'
 
 
+/*
+* Slider Image Style
+*
+*/
+// const c_slider_image_wrap_width = pxToRem(600)
+const c_slider_image_wrap_width = pxToRem(600)
+const c_slider_image_wrap_height = pxToRem(283)
 
 
 /* 
@@ -125,6 +132,9 @@ const mock = {
   c_text_sz_h_xlarge,
   // Font Family
   c_font_family_sans_serif_1,
+  // Slider Image Style
+  c_slider_image_wrap_width,
+  c_slider_image_wrap_height,
   // Container
   c_container_p_on_sm,
   c_container_p_on_md,

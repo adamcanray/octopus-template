@@ -9,7 +9,8 @@
     "classnames": "^2.2.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-slick": "^0.26.1"
   },
   "scripts": {
     "build:css": "postcss src/styles/index.tailwind.css -o src/styles/index.css",
@@ -35,11 +36,15 @@
     ]
   },
   "devDependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "autoprefixer": "^9.7.6",
     "concurrently": "^5.2.0",
     "node-sass": "^4.14.1",
     "postcss-cli": "^7.1.1",
+    "react-emotion": "^10.0.0",
     "react-router-dom": "^5.2.0",
+    "slick-carousel": "^1.8.1",
     "tailwindcss": "^1.4.6"
   }
 }

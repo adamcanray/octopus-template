@@ -18,3 +18,22 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+    
+
+/*
+* react-slick && slick-carousel Override
+* source: https://www.npmjs.com/package/react-slick && https://www.npmjs.com/package/slick-carousel
+*
+*/
+
+/*
+* Override .slick-track && .slick-slide
+*
+*/
+.slick-track{
+  display: flex !important;
+  align-items: center;
+}
+.slick-slide img {
+  // min-height:200px;
+}
