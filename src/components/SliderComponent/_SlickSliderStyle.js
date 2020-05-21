@@ -76,7 +76,6 @@ const SliderWrapper = styled("div")`
   .slick-track:before,
   .slick-track:after {
     display: table;
-
     content: "";
   }
   .slick-track:after {
@@ -211,21 +210,42 @@ const SliderWrapper = styled("div")`
   }
 
   .slick-dots {
+    /*
+    * Custom Style
+    */
     position: absolute;
-    // bottom: 10px;
-    bottom: .7rem;
-
-    // display: block;
-    // text-align: center;
     display: flex;
     justify-content: center;
-
+    bottom: .7rem;
+    // left: -15rem;
+    /*
+    * Default Style
+    */
+    // bottom: 10px;
+    // display: block;
+    // text-align: center;
     width: 100%;
     padding: 0;
     margin: 0;
-
     list-style: none;
 
+    /*
+    * Dots Responsive for every Screen sizes
+    * based on screens in tailwind.config.js
+    * 
+    */
+    @media (max-width: 1280px) {
+      // left: -11rem;
+    }
+    @media (max-width: 1024px) {
+      // left: -7.5rem;
+    }
+    @media (max-width: 768px) {
+
+    }
+    @media (max-width: 640px) {
+
+    }
   }
   .slick-dots li {
     position: relative;
@@ -240,15 +260,11 @@ const SliderWrapper = styled("div")`
   .slick-dots li button {
     font-size: 0;
     line-height: 0;
-
     display: block;
-
     width: 10px;
     height: 10px;
     padding: 5px;
-
     cursor: pointer;
-
     color: transparent;
     border: 0;
     outline: none;
@@ -302,8 +318,7 @@ const SliderWrapper = styled("div")`
 
   .ft-slick__dots--custom {
     height: 8px;
-    width: 14px;
-    background-color: #e5e7e9;
+    width: 12px;
     border-radius: 4px;
     position: relative;
   }
@@ -326,8 +341,12 @@ const SliderWrapper = styled("div")`
 
     .loading {
       height: 8px;
+      /*
+      * this animation timing must equal autoplaySpeed from Slider Settings
+      * 
+      */
       animation: loading 5s ease-in;
-      background-image: linear-gradient(270deg, #4fd15a, #03ac0e);
+      // background-image: linear-gradient(270deg, #4fd15a, #03ac0e);
       display: inline-block;
       position: absolute;
       top: 0;

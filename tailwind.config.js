@@ -182,6 +182,7 @@ module.exports = {
       '24': '6rem',
       '32': '8rem',
       '40': '10rem',
+      '44': '11rem',
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
@@ -225,6 +226,7 @@ module.exports = {
       default: '0.25rem',
       md: '0.375rem',
       lg: '0.5rem',
+      xl: mock.pxToRem(20),
       full: '9999px',
     },
     borderWidth: {
@@ -462,6 +464,10 @@ module.exports = {
     minWidth: {
       '0': '0',
       full: '100%',
+      /*
+      * Custom Min Width
+      */
+      'full+50': '150%',
     },
     objectPosition: {
       bottom: 'bottom',
@@ -852,44 +858,40 @@ module.exports = {
       addComponents({
         '@variants responsive, hover': {
           /*
+          * Hide Scrollbar class
+          *
+          */
+         '.hide-scrollbar::-webkit-scrollbar':{
+           display: 'none'
+          },
+          /*
+          * Custom Scrollbar class
+          *
+          */
+         '.custome-scrollbar::-webkit-scrollbar':{
+            height: '.6rem',            
+          },
+         '.custome-scrollbar::-webkit-scrollbar-track':{
+            background: mock.c_gray_5,
+            borderRadius: '.4rem'
+          },
+          '.custome-scrollbar::-webkit-scrollbar-thumb':{
+            background: mock.c_gray_4,
+            borderRadius: '.4rem'
+          },
+          /*
+          * Slider
           * Custom wrap class for slide
           * variant for every Screen Sizes
           *
           */
-          '.c_slide_wrap_xl':{
+          '.c_slide_wrap_xl, .c_slide_wrap_lg, .c_slide_wrap_md, .c_slide_wrap_sm':{
             display: 'flex !important',
             justifyContent: 'center',
             maxWidth: '600px !important',
             width: '100% !important',
           },
-          '.c_slide_wrap_xl img':{
-            width: '90% !important',
-          },
-          '.c_slide_wrap_lg':{
-            display: 'flex !important',
-            justifyContent: 'center',
-            maxWidth: '600px !important',
-            width: '100% !important',
-          },
-          '.c_slide_wrap_lg img':{
-            width: '90% !important',
-          },
-          '.c_slide_wrap_md':{
-            display: 'flex !important',
-            justifyContent: 'center',
-            maxWidth: '600px !important',
-            width: '100% !important',
-          },
-          '.c_slide_wrap_md img':{
-            width: '90% !important',
-          },
-          '.c_slide_wrap_sm':{
-            display: 'flex !important',
-            justifyContent: 'center',
-            maxWidth: '600px !important',
-            width: '100% !important',
-          },
-          '.c_slide_wrap_sm img':{
+          '.c_slide_wrap_xl img, .c_slide_wrap_lg img, .c_slide_wrap_md img, .c_slide_wrap_sm img':{
             width: '90% !important',
           },
           /*
@@ -897,20 +899,16 @@ module.exports = {
           * default call after sm Screen, 
           * - if used all screen(xl-sm),
           *   or there are conditions that are not met.
-          * *
+          *
           */ 
           '.c_slide_wrap_default':{
-            // display: 'flex !important',
-            // justifyContent: 'center',
-            // maxWidth: '600px !important',
-            // width: '100% !important',
-            // background: 'black'
+
           },
           '.c_slide_wrap_default img':{
             width: '100% !important',
           },
           /* 
-          * Override .slick-current (class default from react-slick)
+          * Override .slick-current (default class from react-slick)
           * Scss
           * 
           */
@@ -919,30 +917,40 @@ module.exports = {
             * if element have class .slick-current, then override style on class .c_slide_wrap_<screen-size>
             *
             */
-            '.c_slide_wrap_xl':{
-              // maxHeight: '250px !important',
+            '.c_slide_wrap_xl, .c_slide_wrap_lg, .c_slide_wrap_md, .c_slide_wrap_sm':{
+
             },
-            '.c_slide_wrap_xl img':{
+            '.c_slide_wrap_xl img, .c_slide_wrap_lg img, .c_slide_wrap_md img, .c_slide_wrap_sm img':{
               width: '100% !important',
             },
-            '.c_slide_wrap_lg':{
-              // maxHeight: '230px !important',
-            },
-            '.c_slide_wrap_lg img':{
-              width: '100% !important',
-            },
-            '.c_slide_wrap_md':{
-              // maxHeight: '210px !important',
-            },
-            '.c_slide_wrap_md img':{
-              width: '100% !important',
-            },
-            '.c_slide_wrap_sm':{
-              // maxHeight: '190px !important',
-            },
-            '.c_slide_wrap_sm img':{
-              width: '100% !important',
-            },
+          },
+
+          /*
+          * Card New Service Gradien Background
+          * 
+          * Note: this mock cannot be placed to theme.Colors, because just work if use 'background' not 'background-color'
+          * 
+          */
+          '.c_card_new_service_bg_1':{
+            background: mock.c_card_new_service_bg_1,
+          },
+          '.c_card_new_service_bg_2':{
+            background: mock.c_card_new_service_bg_2,
+          },
+          /*
+          * react-player Custome Style
+          *
+          * 
+          */
+          '.player-wrapper':{
+            // position: 'relative',
+            // width: '100%',
+            // paddingTop: '56.25%', /* Player ratio: 100 / (1280 / 720) */
+          },
+          '.react-player':{
+            // position: 'absolute',
+            // top: 0,
+            // left: 0,
           }
         }
       })

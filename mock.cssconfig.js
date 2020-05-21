@@ -90,11 +90,23 @@ const c_slider_image_wrap_height = pxToRem(283)
 * Container Padding
 * stand: custom container padding on screen {screen size}
 * variable name based on tailwindcss
+*
 */
 const c_container_p_on_sm = '1rem'
 const c_container_p_on_md = '1.5rem'
 const c_container_p_on_lg = '2rem'
 const c_container_p_on_xl = '2.5rem'
+
+/* 
+* Card New Service
+* stand: custom container padding on screen {screen size}
+* gradien background based on design
+*
+*/
+const c_card_new_service_bg_1 = 'linear-gradient(90deg, #4284DB 0%, #29EAC4 100%)'
+const c_card_new_service_bg_2 = 'linear-gradient(90deg, #00C6FF 0%, #0072FF 100%)'
+
+
 
 
 /*
@@ -102,6 +114,8 @@ const c_container_p_on_xl = '2.5rem'
 *
 */
 const mock = {
+  // 
+  pxToRem,
   // Colors
   c_blue_1,
   c_blue_2,
@@ -140,6 +154,9 @@ const mock = {
   c_container_p_on_md,
   c_container_p_on_lg,
   c_container_p_on_xl,
+  // Card New Service
+  c_card_new_service_bg_1,
+  c_card_new_service_bg_2,
 }
 
 

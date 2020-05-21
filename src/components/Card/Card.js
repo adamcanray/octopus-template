@@ -1,14 +1,55 @@
-import React, {Component} from 'react';
-import cx from 'classnames';
+/*
+* Card Custome
+* 
+*
+*/
 
-class Card extends Component {
+import React, {Component} from 'react'
+import propTypes from 'prop-types'
+import cx from 'classnames'
+
+class CardNewService extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+
+    }
+  }
   render(){
+    const {
+      title,subTitle,buttonText,
+      wrapperClass,mainClass,subMainOneClass,
+      titleClass,subTitleClass,subMainTwoClass,
+      buttonClass
+    } = this.props
+    console.log(this.props)
     return (
-      <div className={cx('bg-red-400')}>
-        i am card
+      <div className={cx(wrapperClass)}>
+        <div className={cx(mainClass)}>
+          <div className={cx(subMainOneClass)}>
+            <div className={cx(titleClass)}>{title}</div>
+            <p className={cx(subTitleClass)}>{subTitle}</p>
+          </div>
+          <div className={cx(subMainTwoClass)}>
+            <button className={cx(buttonClass)}>{buttonText}</button>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-export default Card
+CardNewService.propTypes = {
+  title: propTypes.string,
+  subTitle: propTypes.string,
+  buttonText: propTypes.string,
+  wrapperClass: propTypes.string,
+  mainClass: propTypes.string,
+  subMainOneClass: propTypes.string,
+  titleClass: propTypes.string,
+  subTitleClass: propTypes.string,
+  subMainTwoClass: propTypes.string,
+  buttonClass: propTypes.string,
+}
+
+export default CardNewService

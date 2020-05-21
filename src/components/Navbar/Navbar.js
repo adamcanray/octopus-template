@@ -26,7 +26,7 @@ class Navbar extends Component {
       <div className={cx(s,"border-c_gray_4","border-b")}>
         <nav className={cx("justify-between","flex items-center flex-wrap px-10 py-3")}> 
           <div className={cx("flex items-center flex-shrink-0 text-black mr-3")}>
-            <span className={cx("text-c_text_sz_h_large","font-bold tracking-tight")}>{process.env.REACT_APP_NAME} Store</span>
+            <span className={cx("text-c_text_sz_h_large","font-bold tracking-tight")}>{process.env.REACT_APP_NAME_STORE}</span>
           </div>
           <div className={cx("block md:hidden")}>
             <button onClick={this.toggle.bind(this)} className={cx("flex items-center px-3 py-2 border rounded text-black border-black hover:text-gray-400 hover:border-gray-400")}>

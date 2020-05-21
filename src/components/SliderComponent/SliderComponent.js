@@ -31,9 +31,7 @@ class SliderComponent extends Component {
     const {images} = this.props
     const settings = {
       centerMode: true,
-      // centerPadding: '300px',
       centerPadding: '25%',
-      className: 'mt-12',
       dots: true,
       autoplay: true,
       autoplaySpeed: 5000,
@@ -46,8 +44,11 @@ class SliderComponent extends Component {
       // adaptiveHeight: true,
       appendDots: dots => <ul>{dots}</ul>,
       customPaging: i => (
-        <div className="ft-slick__dots--custom">
-          <div className="loading" />
+        <div className={cx(
+          "bg-c_gray_3",
+          "ft-slick__dots--custom",
+        )}>
+          <div className="loading bg-c_green_2" />
         </div>
       ),
       responsive: [
@@ -64,7 +65,6 @@ class SliderComponent extends Component {
             slidesToScroll: 1,
             infinite: true,
             dots: true,
-            // centerPadding: '20%',
           }
         },
         {
@@ -74,7 +74,6 @@ class SliderComponent extends Component {
             slidesToScroll: 1,
             infinite: true,
             dots: true,
-            // centerPadding: '50px',
           }
         },
         {
@@ -88,7 +87,7 @@ class SliderComponent extends Component {
       ]
     };
     return (
-      <div className={cx("","")}>
+      <div className={cx("","mt-12")}>
         <SliderWrapper>
           <Slider {...settings}>
             {
@@ -101,8 +100,14 @@ class SliderComponent extends Component {
                     "pb-4 md:pb-0"
                   )}>
                     <div className={cx("absolute","top-6 right-10")}>
-                      <div className={cx("text-c_gray_5","text-c_text_sz_h_reguler font-bold")}>{item.title}</div>
-                      <div className={cx("text-c_gray_5","text-c_text_sz_body font-semibold")}>{item.subTitle}</div>
+                      <div className={cx(
+                        "text-c_gray_5",
+                        "text-c_text_sz_body md:text-c_text_sz_h_small lg:text-c_text_sz_h_reguler font-bold"
+                      )}>{item.title}</div>
+                      <div className={cx(
+                        "text-c_gray_5",
+                        "text-c_text_sz_caption md:text-c_text_sz_body font-semibold"
+                      )}>{item.subTitle}</div>
                     </div>
                     <img key={index} alt="img" className={cx("","rounded-lg")} src={item.url} />
                   </div>
