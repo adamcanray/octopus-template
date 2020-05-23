@@ -23,7 +23,6 @@ class CardNewService extends Component {
   }
   render(){
     const {imgUrl,productName,productPrice,productRating,productLocation,button,buttonText,buttonClass,wrapperButtonClass} = this.props
-    console.log(this.props)
     const Button = (
       <div className={cx(wrapperButtonClass)}>
         <button className={cx(buttonClass)}>{buttonText}</button>

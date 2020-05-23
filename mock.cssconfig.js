@@ -35,6 +35,7 @@ const c_blue_2 = '#1976D2'
 const c_blue_3 = '#2196F3'
 const c_blue_4 = '#64B5F6'
 const c_blue_5 = '#BBDEFB'
+const c_blue_facebook_1 = '#3B5998'
 
 const c_orange_1 = '#E65100'
 const c_orange_2 = '#F57C00'
@@ -54,6 +55,7 @@ const c_gray_3 = '#9E9E9E'
 const c_gray_4 = '#E0E0E0'
 const c_gray_5 = '#F5F5F5'
 
+const c_red_google_1 = '#D24836'
 
 /*
 * Font Size
@@ -67,7 +69,7 @@ const c_text_sz_body = pxToRem(14)
 const c_text_sz_h_small = pxToRem(16)
 const c_text_sz_h_reguler = pxToRem(18)
 const c_text_sz_h_large = pxToRem(24)
-const c_text_sz_h_xlarge = pxToRem(36)
+const c_text_sz_h_xlarge = pxToRem(32)
 
 
 /*
@@ -122,6 +124,7 @@ const mock = {
   c_blue_3,
   c_blue_4,
   c_blue_5,
+  c_blue_facebook_1,
   c_orange_1,
   c_orange_2,
   c_orange_3,
@@ -137,6 +140,7 @@ const mock = {
   c_gray_3,
   c_gray_4,
   c_gray_5,
+  c_red_google_1,
   // Font Size
   c_text_sz_caption,
   c_text_sz_body,

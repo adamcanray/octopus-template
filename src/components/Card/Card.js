@@ -8,7 +8,7 @@ import React, {Component} from 'react'
 import propTypes from 'prop-types'
 import cx from 'classnames'
 
-class CardNewService extends Component {
+class Card extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -22,7 +22,6 @@ class CardNewService extends Component {
       titleClass,subTitleClass,subMainTwoClass,
       buttonClass
     } = this.props
-    console.log(this.props)
     return (
       <div className={cx(wrapperClass)}>
         <div className={cx(mainClass)}>
@@ -39,7 +38,7 @@ class CardNewService extends Component {
   }
 }
 
-CardNewService.propTypes = {
+Card.propTypes = {
   title: propTypes.string,
   subTitle: propTypes.string,
   buttonText: propTypes.string,
@@ -52,4 +51,4 @@ CardNewService.propTypes = {
   buttonClass: propTypes.string,
 }
 
-export default CardNewService
+export default Card

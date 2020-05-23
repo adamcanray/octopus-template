@@ -26,6 +26,7 @@ module.exports = {
       c_blue_3: mock.c_blue_3,
       c_blue_4: mock.c_blue_4,
       c_blue_5: mock.c_blue_5,
+      c_blue_facebook_1: mock.c_blue_facebook_1,
 
       c_orange_1: mock.c_orange_1,
       c_orange_2: mock.c_orange_2,
@@ -44,6 +45,8 @@ module.exports = {
       c_gray_3: mock.c_gray_3,
       c_gray_4: mock.c_gray_4,
       c_gray_5: mock.c_gray_5,
+
+      c_red_google_1: mock.c_red_google_1,
 
 
       /*
@@ -436,6 +439,10 @@ module.exports = {
       auto: 'auto',
       ...theme('spacing'),
       ...negative(theme('spacing')),
+      /*
+      * Custom Margin Sizes
+      */ 
+      '-50': '-50%',
     }),
     maxHeight: {
       full: '100%',
@@ -951,6 +958,12 @@ module.exports = {
             // position: 'absolute',
             // top: 0,
             // left: 0,
+          }
+          /*
+          * 
+          */
+          '.webkit-overflow-scrolling-touch':{
+            WebkitOverflowScrolling : 'touch'; /* Lets it scroll lazy */
           }
         }
       })

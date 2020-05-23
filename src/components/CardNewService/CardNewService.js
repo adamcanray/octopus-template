@@ -17,7 +17,6 @@ class CardNewService extends Component {
   }
   render(){
     const {title,subTitle,buttonText,bgClass} = this.props
-    console.log(this.props)
     return (
       <div className={cx("mt-5 px-3","w-full sm:w-full md:w-1/3")}>
         <div className={cx(bgClass,"rounded-xl"," overflow-hidden shadow-lg")}>

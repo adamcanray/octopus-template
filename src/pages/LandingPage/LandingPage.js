@@ -439,6 +439,7 @@ class LandingPage extends Component {
               newService.map((item,index)=>{
                 return (
                   <CardNewService 
+                    key={index}
                     title={item.title}
                     subTitle={item.subTitle}
                     buttonText={item.buttonText}
@@ -461,6 +462,7 @@ class LandingPage extends Component {
               newProducts.map((item,index)=>{
                 return (
                   <CardProduct
+                    key={index}
                     imgUrl={item.imgUrl}
                     productName={item.productName}
                     productPrice={item.productPrice}
@@ -484,6 +486,7 @@ class LandingPage extends Component {
               mostWantedProducts.map((item,index)=>{
                 return (
                   <CardProduct
+                    key={index}
                     imgUrl={item.imgUrl}
                     productName={item.productName}
                     productPrice={item.productPrice}
@@ -507,6 +510,7 @@ class LandingPage extends Component {
               recommendedProducts.map((item,index)=>{
                 return (
                   <CardProduct
+                    key={index}
                     imgUrl={item.imgUrl}
                     productName={item.productName}
                     productPrice={item.productPrice}
@@ -521,30 +525,28 @@ class LandingPage extends Component {
         <div className={cx("mt-12")}>
           <div className={cx("flex justify-between items-end")}>
             <div className={cx("text-c_text_sz_h_large","font-bold")}>Layanan Lainnya</div>
-            <div className={cx("text-c_text_sz_h_reguler hover:text-c_gray_3","font-bold","mr-16")}>
-              {/* <Link to='/redirect'>Lihat semua</Link> */}
-            </div>
           </div>
-          <div className={cx("flex justify-between bg-green-400 px-4")}>
-            <Card 
-              title={'Mau Produk Kamu Tampil Disini? Coba buka toko GRATIS!'}
-              subTitle={'Aladin Store membantu menjual produkmu lebih mudah dan cepat'}
-              buttonText={'Buka Toko'}
-              wrapperClass={'max-w-md py-8 px-2'}
-              mainClass={'flex flex-col shadow-md rounded-xl px-4 py-4'}
-              subMainOneClass={''}
-              titleClass={'text-c_text_sz_h_large text-c_gray_1 font-bold leading-tight'}
-              subTitleClass={'text-c_text_sz_body text-black pt-4 pb-4'}
-              subMainTwoClass={''}
-              buttonClass={'text-c_text_sz_body text-c_gray_5 bg-c_orange_2 font-semibold rounded-md py-4 px-8'}
-            />
-            <div className={cx("player-wrapper","w-1/2 bg-red-400")}>
+          <div className={cx("grid grid-cols-10 sm:grid-cols-8 gap-4","")}>
+            <div className={cx("col-span-10 sm:col-span-4")}>
+              <Card 
+                title={'Mau Produk Kamu Tampil Disini? Coba buka toko GRATIS!'}
+                subTitle={'Aladin Store membantu menjual produkmu lebih mudah dan cepat'}
+                buttonText={'Buka Toko'}
+                wrapperClass={'max-w-xl py-8 px-2'}
+                mainClass={'flex flex-col shadow-md rounded-xl px-4 py-4'}
+                subMainOneClass={''}
+                titleClass={'text-c_text_sz_h_large text-c_gray_1 font-bold leading-tight'}
+                subTitleClass={'text-c_text_sz_body text-black pt-4 pb-4'}
+                subMainTwoClass={''}
+                buttonClass={'text-c_text_sz_body text-c_gray_5 bg-c_orange_2 font-semibold rounded-md py-4 px-8'}
+              />
+            </div>
+            <div className={cx("col-span-10 sm:col-span-4 h-56 sm:h-full","player-wrapper","")}>
               <ReactPlayer 
                 className={cx("react-player bg-blue-40")} 
                 url='https://www.youtube.com/watch?v=ysz5S6PUM-U' 
-                volume={1}
-                width={'50%'}
-                height={'50%'}
+                width={'100%'}
+                height={'100%'}
               />
             </div>
           </div>
@@ -558,6 +560,7 @@ class LandingPage extends Component {
               searchResultProducts.map((item,index)=>{
                 return (
                   <CardProduct
+                    key={index}
                     imgUrl={item.imgUrl}
                     productName={item.productName}
                     productPrice={item.productPrice}

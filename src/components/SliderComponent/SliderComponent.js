@@ -26,8 +26,6 @@ class SliderComponent extends Component {
     }
   }
   render(){
-    console.log(this.props.images)
-    console.log(this.state)
     const {images} = this.props
     const settings = {
       centerMode: true,

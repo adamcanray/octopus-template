@@ -93,11 +93,12 @@ class Body extends Component {
         text: `Lacak Pengiriman`,
       },
     ]
+    const titleColFour = `Profile Kami`
     return (
-      <div className={cx("border-c_gray_4","border-t border-b pt-10 pb-4 mb-10")}>
+      <div className={cx("border-c_gray_4 border-t border-b"," mt-12 pt-10 pb-4 mb-10")}>
         <div className={cx("container")}>
-        <div class="grid grid-cols-8 gap-4">
-          <div class="col-span-2 bg-gray-0">
+        <div className={cx("grid grid-cols-9 sm:grid-cols-8 gap-4")}>
+          <div className={cx("col-span-3 sm:col-span-2 bg-gray-0","")}>
             <div className={cx("font-bold text-c_gray_1 c_text_sz_h_reguler")}>{titleColOne}</div>
             <div className={cx("pt-2")}>
               <ul>
@@ -113,7 +114,7 @@ class Body extends Component {
               </ul>
             </div>
           </div>
-          <div class="col-span-2 bg-gray-0">
+          <div className={cx("col-span-3 sm:col-span-2 bg-gray-0","")}>
             <div className={cx("font-bold text-c_gray_1 c_text_sz_h_reguler")}>{titleColTwo}</div>
             <div className={cx("pt-2")}>
               <ul>
@@ -129,7 +130,7 @@ class Body extends Component {
               </ul>
             </div>
           </div>
-          <div class="col-span-2 bg-gray-0">
+          <div className={cx("col-span-3 sm:col-span-2 bg-gray-0","")}>
             <div className={cx("font-bold text-c_gray_1 c_text_sz_h_reguler")}>{titleColThree}</div>
             <div className={cx("pt-2")}>
               <ul>
@@ -145,8 +146,14 @@ class Body extends Component {
               </ul>
             </div>
           </div>
+          <div className={cx("col-span-3 sm:col-span-2 bg-gray-0","")}>
+            <div className={cx("font-bold text-c_gray_1 c_text_sz_h_reguler")}>{titleColFour}</div>
+            <div className={cx("pt-2")}>
+              blabla
+            </div>
+          </div>
         </div>
-          &copy;2020 Octopus Template.
+          {/* &copy;2020 Octopus Template. */}
         </div>
       </div>
     )
