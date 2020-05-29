@@ -25,10 +25,10 @@
   @apply bg-c_gray_4;
 }
 .btn-masuk{
-  @apply btn-full-rounded border-2 border-c_orange_4 font-normal text-c_text_sz_body;
+  @apply btn-full-rounded border-2 border-c_blue_3 font-normal text-c_text_sz_body;
 }
 .btn-daftar{
-  @apply btn-full-rounded bg-c_orange_4 font-normal text-c_text_sz_body text-white;
+  @apply btn-full-rounded bg-c_blue_3 font-normal text-c_text_sz_body text-white;
 }
 
 .form-search-wrap{

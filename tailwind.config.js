@@ -183,15 +183,30 @@ module.exports = {
       '16': '4rem',
       '20': '5rem',
       '24': '6rem',
+      '28': '7rem',
+      '30': '7.5rem',
       '32': '8rem',
+      '36': '9rem',
+      '38': '9.5rem',
       '40': '10rem',
       '44': '11rem',
       '48': '12rem',
+      '50': '12.5rem',
+      '52': '13rem',
       '56': '14rem',
+      '58': '14.5rem',
+      '60': '15rem',
+      '62': '15.5rem',
       '64': '16rem',
       '72': '18rem',
+      '76': '19rem',
+      '80': '20rem',
       '84': '21rem',
+      '88': '22rem',
+      '92': '23rem',
       '96': '24rem',
+      '100': '25rem',
+      '104': '26rem',
 
       /*
       * Slider Image Style
@@ -250,9 +265,19 @@ module.exports = {
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
       none: 'none',
+      /*
+      * Custom Box Shadow
+      *
+      */
+     'c_outline_primary': mock.c_outline_primary,
+     'c_outline_success': mock.c_outline_success,
+     'c_outline_danger': mock.c_outline_danger,
+     'c_box_shadow_1': mock.c_box_shadow_1,
+     'c_box_shadow_2': mock.c_box_shadow_2,
     },
     container: {
       center: true,
+      // padding: '2rem',
       padding: {
         /* 
         * Custom Container Padding
@@ -341,6 +366,11 @@ module.exports = {
       c_text_sz_h_small: mock.c_text_sz_h_small,
       c_text_sz_h_reguler: mock.c_text_sz_h_reguler,
       c_text_sz_h_large: mock.c_text_sz_h_large,
+      c_text_sz_h_2reguler: mock.c_text_sz_h_2reguler,
+      c_text_sz_h_3reguler: mock.c_text_sz_h_3reguler,
+      c_text_sz_h_2large: mock.c_text_sz_h_2large,
+      c_text_sz_h_3large: mock.c_text_sz_h_3large,
+      c_text_sz_h_4large: mock.c_text_sz_h_4large,
       c_text_sz_h_xlarge: mock.c_text_sz_h_xlarge,
       /*
       * Default Font Size
@@ -399,8 +429,12 @@ module.exports = {
       '24': '6rem',
       '32': '8rem',
       '40': '10rem',
+      '44': '11rem',
       '48': '12rem',
       '56': '14rem',
+      '58': '14.5rem',
+      '60': '15rem',
+      '62': '15.5rem',
       '64': '16rem',
       '72': '18rem',
       '84': '21rem',
@@ -445,7 +479,10 @@ module.exports = {
       '-50': '-50%',
     }),
     maxHeight: {
-      full: '100%',
+      '1/4': '25%',
+     '1/2': '50%',
+     '3/4': '75%',
+     'full': '100%',
       screen: '100vh',
     },
     maxWidth: (theme, { breakpoints }) => ({
@@ -463,11 +500,25 @@ module.exports = {
       full: '100%',
       ...breakpoints(theme('screens')),
     }),
-    minHeight: {
+    // minHeight: {
+    //  '0': '0',
+    //  '1/4': '25%',
+    //  '1/2': '50%',
+    //  '3/4': '75%',
+    //  '9/10': '90%',
+    //  'full': '100%',
+    //   screen: '100vh',
+    // },
+    minHeight: theme => ({
       '0': '0',
-      full: '100%',
+     '1/4': '25%',
+     '1/2': '50%',
+     '3/4': '75%',
+     '9/10': '90%',
+     'full': '100%',
       screen: '100vh',
-    },
+      ...theme('spacing'),
+    }),
     minWidth: {
       '0': '0',
       full: '100%',
@@ -518,9 +569,14 @@ module.exports = {
       ...theme('spacing'),
       ...negative(theme('spacing')),
     }),
-    stroke: {
-      current: 'currentColor',
-    },
+    stroke: theme => ({
+      'red': theme('colors.red.500'),
+      'green': theme('colors.green.500'),
+      'blue': theme('colors.blue.500'),
+      /* Custom Stroke */ 
+      'c_green_2': theme('colors.c_green_2'),
+      'c_green_3': theme('colors.c_green_3'),
+    }),
     strokeWidth: {
       '0': '0',
       '1': '1',
@@ -818,7 +874,7 @@ module.exports = {
     position: ['responsive'],
     resize: ['responsive'],
     space: ['responsive'],
-    stroke: ['responsive'],
+    stroke: ['responsive', 'hover'],
     strokeWidth: ['responsive'],
     tableLayout: ['responsive'],
     textAlign: ['responsive'],
@@ -888,8 +944,6 @@ module.exports = {
           },
           /*
           * Slider
-          * Custom wrap class for slide
-          * variant for every Screen Sizes
           *
           */
           '.c_slide_wrap_xl, .c_slide_wrap_lg, .c_slide_wrap_md, .c_slide_wrap_sm':{
@@ -903,9 +957,6 @@ module.exports = {
           },
           /*
           * Default
-          * default call after sm Screen, 
-          * - if used all screen(xl-sm),
-          *   or there are conditions that are not met.
           *
           */ 
           '.c_slide_wrap_default':{
@@ -931,18 +982,11 @@ module.exports = {
               width: '100% !important',
             },
           },
-
-          /*
-          * Card New Service Gradien Background
-          * 
-          * Note: this mock cannot be placed to theme.Colors, because just work if use 'background' not 'background-color'
-          * 
-          */
-          '.c_card_new_service_bg_1':{
-            background: mock.c_card_new_service_bg_1,
+          '.c_gradient_bg_1':{
+            background: mock.c_gradient_bg_1,
           },
-          '.c_card_new_service_bg_2':{
-            background: mock.c_card_new_service_bg_2,
+          '.c_gradient_bg_2':{
+            background: mock.c_gradient_bg_2,
           },
           /*
           * react-player Custome Style
@@ -958,12 +1002,12 @@ module.exports = {
             // position: 'absolute',
             // top: 0,
             // left: 0,
-          }
+          },
           /*
           * 
           */
           '.webkit-overflow-scrolling-touch':{
-            WebkitOverflowScrolling : 'touch'; /* Lets it scroll lazy */
+            WebkitOverflowScrolling : 'touch', /* Lets it scroll lazy */
           }
         }
       })

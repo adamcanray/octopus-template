@@ -1,10 +1,9 @@
 /* 
-* Aladin Store mock css
+* Mock CSS
 *
 * this file contains mock css from designer
-* example: borderColor, buttonColor, etc.
-* "c" stand for "custom"
-*
+* ex: borderColor, buttonColor, etc.
+* 
 * priority "rem" over "px"
 * 1px = 0.0625rem (if default pixel was: 16px)
 * website that provide convert px to rem: https://www.ninjaunits.com/converters/pixels/pixels-rem/
@@ -15,6 +14,7 @@
 /*
 * Convert px to rem
 * Default Pixel: 16
+* code source: self
 */
 const pxToRem = px => {
   const remPer1Px = 0.0625
@@ -22,11 +22,25 @@ const pxToRem = px => {
   return rem.toString().concat('rem')
 }
 
+/*
+* Convert hex to rgba
+* code source: https://stackoverflow.com/a/21648508/11587161
+*/
+const hexToRgbA = (hex,a) => {
+  let c;
+  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+      c= hex.substring(1).split('');
+      if(c.length== 3){
+          c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+      }
+      c= '0x'+c.join('');
+      return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+','+a+')';
+  }
+  throw new Error('Bad Hex');
+}
 
 /*
 * Colors
-* stand: custom {colorName} {number}
-* 1(dark) to 5(light)
 *
 */
 
@@ -68,9 +82,13 @@ const c_text_sz_caption = pxToRem(12)
 const c_text_sz_body = pxToRem(14)
 const c_text_sz_h_small = pxToRem(16)
 const c_text_sz_h_reguler = pxToRem(18)
+const c_text_sz_h_2reguler = pxToRem(20)
+const c_text_sz_h_3reguler = pxToRem(22)
 const c_text_sz_h_large = pxToRem(24)
+const c_text_sz_h_2large = pxToRem(26)
+const c_text_sz_h_3large = pxToRem(28)
+const c_text_sz_h_4large = pxToRem(28)
 const c_text_sz_h_xlarge = pxToRem(32)
-
 
 /*
 * Font Family
@@ -98,6 +116,7 @@ const c_container_p_on_sm = '1rem'
 const c_container_p_on_md = '1.5rem'
 const c_container_p_on_lg = '2rem'
 const c_container_p_on_xl = '2.5rem'
+// const c_container_p_on_xl = '3rem'
 
 /* 
 * Card New Service
@@ -105,10 +124,26 @@ const c_container_p_on_xl = '2.5rem'
 * gradien background based on design
 *
 */
-const c_card_new_service_bg_1 = 'linear-gradient(90deg, #4284DB 0%, #29EAC4 100%)'
-const c_card_new_service_bg_2 = 'linear-gradient(90deg, #00C6FF 0%, #0072FF 100%)'
+const c_gradient_bg_1 = 'linear-gradient(90deg, #4284DB 0%, #29EAC4 100%)'
+const c_gradient_bg_2 = 'linear-gradient(90deg, #00C6FF 0%, #0072FF 100%)'
 
+/* 
+* Card Product Shadow
+* stand: custom container padding on screen {screen size}
+* box-shadow based on design
+*
+*/
+const c_box_shadow_1 = `0px 0px 8px ${hexToRgbA('#000',.2)}`
+const c_box_shadow_2 = `0px 4px 6px ${hexToRgbA('#000',.08)}`
 
+/*
+* Outline Shadows Colors
+* stand: custom outline <alias_name_colors>
+* 
+*/
+const c_outline_primary = `0 0 0 3px ${hexToRgbA(c_blue_3,.4)}`
+const c_outline_success = `0 0 0 3px ${hexToRgbA(c_green_3,.4)}`
+const c_outline_danger = `0 0 0 3px ${hexToRgbA(c_orange_1,.4)}`
 
 
 /*
@@ -116,7 +151,7 @@ const c_card_new_service_bg_2 = 'linear-gradient(90deg, #00C6FF 0%, #0072FF 100%
 *
 */
 const mock = {
-  // 
+  // func
   pxToRem,
   // Colors
   c_blue_1,
@@ -146,7 +181,12 @@ const mock = {
   c_text_sz_body,
   c_text_sz_h_small,
   c_text_sz_h_reguler,
+  c_text_sz_h_2reguler,
+  c_text_sz_h_3reguler,
   c_text_sz_h_large,
+  c_text_sz_h_2large,
+  c_text_sz_h_3large,
+  c_text_sz_h_4large,
   c_text_sz_h_xlarge,
   // Font Family
   c_font_family_sans_serif_1,
@@ -159,8 +199,15 @@ const mock = {
   c_container_p_on_lg,
   c_container_p_on_xl,
   // Card New Service
-  c_card_new_service_bg_1,
-  c_card_new_service_bg_2,
+  c_gradient_bg_1,
+  c_gradient_bg_2,
+  // Card Product Shadow
+  c_box_shadow_1,
+  c_box_shadow_2,
+  // Outline Shadows Colors
+  c_outline_primary,
+  c_outline_success,
+  c_outline_danger,
 }
 
 

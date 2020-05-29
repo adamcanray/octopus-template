@@ -43,7 +43,7 @@ class SliderComponent extends Component {
       appendDots: dots => <ul>{dots}</ul>,
       customPaging: i => (
         <div className={cx(
-          "bg-c_gray_3",
+          "bg-c_gray_5",
           "ft-slick__dots--custom",
         )}>
           <div className="loading bg-c_green_2" />
