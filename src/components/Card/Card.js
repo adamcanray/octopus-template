@@ -51,7 +51,7 @@ class Card extends Component {
                       "flex justify-center items-center ",
                       "w-20 h-20",
                     )}>
-                      <img className={cx("w-full h-full rounded-full")} src={profileImg} />
+                      <img className={cx("w-full h-full rounded-full")} src={profileImg} alt={profileTitle} />
                     </div>
                   </div>
                   <div className={cx(

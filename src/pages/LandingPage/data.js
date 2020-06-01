@@ -677,6 +677,7 @@ const flashSaleProduct = [
 export {
   images,
   kategori,
+  newService,
   newProducts,
   mostWantedProducts,
   recommendedProducts,

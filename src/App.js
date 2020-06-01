@@ -14,6 +14,9 @@ import Footer from './layout/Footer/Footer'
 import LandingPage from './pages/LandingPage/LandingPage'
 import ProductDetailPage from './pages/ProductDetailPage/ProductDetailPage'
 import KategoriDetailPage from './pages/KategoriDetailPage/KategoriDetailPage'
+import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
 import {logoutAction} from './store/actions/Auth'
 
 const PrivateRoute = ({ dispatch, component, ...rest }) => {
@@ -37,21 +40,49 @@ const PrivateRoute = ({ dispatch, component, ...rest }) => {
 
 class App extends Component {
   render() {
+    const routes = [
+      {
+        path: '/',
+        component: LandingPage,
+      }, 
+      {
+        path: '/login',
+        component: Login,
+      },
+      {
+        path: '/register',
+        component: Register,
+      }, 
+      {
+        path: '/forgot-password',
+        component: ForgotPassword,
+      },
+      {
+        path: '/:kategori',
+        component: KategoriDetailPage,
+        // routes: {
+        //   path: '/:kategori/:produkName',
+        //   component: ProductDetailPage
+        // }
+      },
+      {
+        path: '/:kategori/:produkName',
+        component: ProductDetailPage
+      }
+    ]
+    const routeComponents = routes.map(({path,component},index) => <Route exact path={path} component={component} key={index} />)
     return (
       <div>
-        <div className={cx("sticky top-0 z-10")}>
+        <div className={cx("sticky top-0 z-10","mb-8")}>
           <Header />
         </div>
           <Switch>
-            {/* <Route exact path="/" render={() => <Redirect to="/app" />} /> */}
-            <Route exact path="/" component={LandingPage}/>
             <PrivateRoute
               path="/app"
               dispatch={this.props.dispatch}
               component={Body}
             />
-            <Route exact path="/:kategori" component={KategoriDetailPage} />
-            <Route exact path="/:kategori/:namaProduk" component={ProductDetailPage} />
+            {routeComponents}
             <Route exact path="*">
               <div>
                 404 page Not Found.

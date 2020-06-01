@@ -6,15 +6,15 @@
 import React, { Component } from 'react'
 import cx from 'classnames'
 import {Link,Redirect,withRouter} from 'react-router-dom'
-import ReactPlayer from 'react-player'
 import jwt from 'jsonwebtoken'
+// import ReactPlayer from 'react-player'
 import config from '../../config'
 import {toDash} from '../../functions'
 import './LandingPage.scss'
 import {
   images,
   kategori,
-  newProducts,
+  //newProducts,
   mostWantedProducts,
   recommendedProducts,
   searchResultProducts,
@@ -23,6 +23,7 @@ import {
 import SliderComponent from '../../components/SliderComponent/SliderComponent'
 import CardProduct from '../../components/CardProduct/CardProduct'
 import Card from '../../components/Card/Card'
+
 
 import {ReactComponent as IconRightArrow} from '../../icons/icon-right-arrow-1.svg'
 
@@ -40,7 +41,7 @@ class LandingPage extends Component {
     super(props)
     this.state = {
       email: "",
-      password: ""
+      password: "",
     }
   }
   render() {

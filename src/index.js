@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
 import './styles/index.css'
+import './index.scss'
 
 import rootReducer from './store/store'
 

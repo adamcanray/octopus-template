@@ -823,6 +823,32 @@ video {
   color: rgba(255, 255, 255, var(--text-opacity));
 }
 
+.btn-beli-sekarang{
+  border-radius: 0.375rem;
+  height: 2.5rem;
+  border-width: 2px;
+  --border-opacity: 1;
+  border-color: #F57C00;
+  border-color: rgba(245, 124, 0, var(--border-opacity));
+  font-weight: 400;
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+.btn-tambah-keranjang{
+  border-radius: 0.375rem;
+  height: 2.5rem;
+  --bg-opacity: 1;
+  background-color: #F57C00;
+  background-color: rgba(245, 124, 0, var(--bg-opacity));
+  font-weight: 400;
+  font-size: 0.875rem;
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+  width: 100%;
+}
+
 .form-search-wrap{
   --bg-opacity: 1;
   background-color: #F5F5F5;

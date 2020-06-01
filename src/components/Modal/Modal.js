@@ -38,6 +38,7 @@ class Modal extends Component {
           isOpen={isOpen}
           contentLabel={contentLabel}
           onRequestClose={onRequestClose}
+          shouldFocusAfterRender={false}
           shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
           className={cx(
             "absolute bg-white outline-none rounded-lg overflow-auto webkit-overflow-scrolling-touch custome-scrollbar",
@@ -48,6 +49,14 @@ class Modal extends Component {
             height
           )}
           overlayClassName={cx("fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-25")}
+          style={{
+            content:{
+
+            },
+            overlay:{
+              zIndex:1000
+            }
+          }}
         >
           <div className={cx("w-full max-w-lg mx-auto")}>
             {
@@ -57,13 +66,13 @@ class Modal extends Component {
                 </div>
               ):null
             }
-            {/* {
+            {
               subTitle?(
                 <div className={cx("font-semibold text-c_text_sz_body text-gray-700","leading-tight","px-4",subTitleTextAlign?`text-${subTitleTextAlign}`:'text-center')}>
                   {subTitleText}&nbsp;<button className={cx("font-semibold text-c_green_2")} type="button">Masuk</button>
                 </div>
               ):null
-            } */}
+            }
             {this.props.children}
           </div>
         </ReactModal>

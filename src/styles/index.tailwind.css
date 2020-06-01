@@ -31,6 +31,13 @@
   @apply btn-full-rounded bg-c_blue_3 font-normal text-c_text_sz_body text-white;
 }
 
+.btn-beli-sekarang{
+  @apply rounded-md h-10 border-2 border-c_orange_2 font-normal text-c_text_sz_body w-full;
+}
+.btn-tambah-keranjang{
+  @apply rounded-md h-10 bg-c_orange_2 font-normal text-c_text_sz_body text-white w-full;
+}
+
 .form-search-wrap{
   @apply bg-c_gray_5 rounded-lg font-normal text-c_text_sz_body;
 }

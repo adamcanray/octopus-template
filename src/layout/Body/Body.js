@@ -12,9 +12,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom"
-import LandingPage from '../../pages/LandingPage/LandingPage'
 import PageAfterMasuk from '../../pages/afterLoginPages/PageAfterMasuk'
-
 
 class Content extends Component {
   render() {
