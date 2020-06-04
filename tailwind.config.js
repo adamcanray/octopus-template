@@ -207,6 +207,8 @@ module.exports = {
       '96': '24rem',
       '100': '25rem',
       '104': '26rem',
+      '108': '27rem',
+      '112': '28rem',
 
       /*
       * Slider Image Style
@@ -298,6 +300,8 @@ module.exports = {
       text: 'text',
       move: 'move',
       'not-allowed': 'not-allowed',
+      crosshair: 'crosshair',
+      'zoom-in': 'zoom-in',
     },
     divideColor: theme => theme('borderColor'),
     divideOpacity: theme => theme('borderOpacity'),
@@ -406,7 +410,7 @@ module.exports = {
       full: '100%',
       screen: '100vh',
     }),
-    inset: {
+    : {
       '0': '0',
       auto: 'auto',
       /*
@@ -828,10 +832,10 @@ module.exports = {
     borderOpacity: ['responsive', 'hover', 'focus'],
     borderRadius: ['responsive'],
     borderStyle: ['responsive'],
-    borderWidth: ['responsive', 'hover'],
+    borderWidth: ['responsive', 'first', 'last', 'hover'],
     boxShadow: ['responsive', 'hover', 'focus'],
     boxSizing: ['responsive'],
-    cursor: ['responsive'],
+    cursor: ['responsive','hover'],
     display: ['responsive'],
     divideColor: ['responsive'],
     divideOpacity: ['responsive'],
@@ -1008,6 +1012,21 @@ module.exports = {
           */
           '.webkit-overflow-scrolling-touch':{
             WebkitOverflowScrolling : 'touch', /* Lets it scroll lazy */
+          },
+          /*
+          * 
+          */
+          '.image-zoom-figure':{
+            width: '600px',
+            backgroundRepeat: 'no-repeat',
+          },
+          '.image-zoom-figure:hover .image-zoom-img':{
+            opacity: '0',
+          },
+          '.image-zoom-img':{
+            display: 'block',
+            width: '100%',
+            pointerEvents: 'none',
           }
         }
       })

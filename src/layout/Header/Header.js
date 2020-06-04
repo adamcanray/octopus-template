@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
-import Navbar from '../../components/Navbar/Navbar'
 import Flasher from '../../components/Flasher/Flasher'
+import Navbar from '../../components/Navbar/Navbar'
+import BreadCrumbs from 'components/BreadCrumbs/BreadCrumbs'
 
 class Header extends Component {
   render(){
@@ -9,6 +10,7 @@ class Header extends Component {
       <div>
         <Flasher />
         <Navbar />
+        {/* <BreadCrumbs /> */}
       </div>
     )
   }

@@ -8,19 +8,21 @@ import {
 import {connect} from 'react-redux'
 import cx from 'classnames'
 // layout
-import Header from './layout/Header/Header'
-import Body from './layout/Body/Body'
-import Footer from './layout/Footer/Footer'
-import LandingPage from './pages/LandingPage/LandingPage'
-import ProductDetailPage from './pages/ProductDetailPage/ProductDetailPage'
-import KategoriDetailPage from './pages/KategoriDetailPage/KategoriDetailPage'
-import Login from './pages/Login/Login'
-import Register from './pages/Register/Register'
-import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
-import {logoutAction} from './store/actions/Auth'
+import Header from 'layout/Header/Header'
+import Body from 'layout/Body/Body'
+import Footer from 'layout/Footer/Footer'
+import LandingPage from 'pages/LandingPage/LandingPage'
+import ProductDetailPage from 'pages/ProductDetailPage/ProductDetailPage'
+import KategoriDetailPage from 'pages/KategoriDetailPage/KategoriDetailPage'
+import Login from 'pages/Login/Login'
+import Register from 'pages/Register/Register'
+import RegisterVerify from 'pages/Register/RegisterVerify'
+import RegisterVerifyCode from 'pages/Register/RegisterVerifyCode'
+import ForgotPassword from 'pages/ForgotPassword/ForgotPassword'
+import {logoutAction} from 'store/actions/Auth'
 
 const PrivateRoute = ({ dispatch, component, ...rest }) => {
-  if (!LandingPage.isAuthenticated(localStorage.getItem("token"))) {
+  if (!Login.isAuthenticated(localStorage.getItem("token"))) {
     /*
     * must dipatch logoutAction twice(in App for listen and afterLoginPages for action)
     */ 
@@ -54,6 +56,14 @@ class App extends Component {
         component: Register,
       }, 
       {
+        path: '/register/verify',
+        component: RegisterVerify,
+      }, 
+      {
+        path: '/register/verify/code',
+        component: RegisterVerifyCode,
+      }, 
+      {
         path: '/forgot-password',
         component: ForgotPassword,
       },
@@ -73,7 +83,7 @@ class App extends Component {
     const routeComponents = routes.map(({path,component},index) => <Route exact path={path} component={component} key={index} />)
     return (
       <div>
-        <div className={cx("sticky top-0 z-10","mb-8")}>
+        <div className={cx("sticky top-0 z-10","mb-")}>
           <Header />
         </div>
           <Switch>

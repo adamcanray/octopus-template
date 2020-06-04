@@ -7,9 +7,12 @@ import React, { Component } from 'react'
 import cx from 'classnames'
 import {Link,withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {isEmail} from '../../functions'
-import InputValidate from '../../components/InputValidate/InputValidate'
-import {loginAction} from '../../store/actions/Auth'
+import isEmail from 'validator/lib/isEmail'
+import isMobilePhone from 'validator/lib/isMobilePhone'
+// import {isEmail} from 'functions'
+import InputValidate from 'components/InputValidate/InputValidate'
+import PageWrapper from 'components/PageWrapper/PageWrapper'
+import {loginAction} from 'store/actions/Auth'
 
 class Register extends Component {
   constructor(props){
@@ -17,6 +20,8 @@ class Register extends Component {
     this.state = {
       nama:'',
       namaValidate:false,
+      nomor:'',
+      nomorValidate:false,
       email:'',
       emailValidate:false,
     }
@@ -38,11 +43,16 @@ class Register extends Component {
     let value = target.value
     /* validation */
     if(type==='email'){
-      type==='email'&&isEmail.test(value) ?
+      // type==='email'&&isEmail.test(value) ?
+      type==='email'&&isEmail(value) ?
       this.setState({[id]: true})
       : this.setState({[id]: false})
     }else if(type==='text'){
       type==='text'&&name==='nama'&&value.length>=4?
+      this.setState({[id]:true})
+      : this.setState({[id]:false})
+    }else if(type==='number'){
+      type==='number'&&name==='nomor'&&isMobilePhone(value)?
       this.setState({[id]:true})
       : this.setState({[id]:false})
     }
@@ -56,11 +66,14 @@ class Register extends Component {
     const {
       nama,
       namaValidate,
+      nomor,
+      nomorValidate,
       email,
       emailValidate,
     } = this.state
     namaValidate&&emailValidate?
-    this.props.loginAction({nama,email})
+    // this.props.loginAction({nama,email})
+    this.props.history.push('/register/verify',{nama,nomor,email})
     :alert('auth is invalid')
   }
   render() {
@@ -68,6 +81,8 @@ class Register extends Component {
     const {
       nama,
       namaValidate,
+      nomor,
+      nomorValidate,
       email,
       emailValidate,
     } = this.state
@@ -76,77 +91,110 @@ class Register extends Component {
     //   match
     // } = this.props
     return (
-      <div className={cx("container pt-12")}>
-        <div className={cx("grid grid-cols-8 gap-0")}>
-          <div className={cx("col-span-8","text-center text-c_text_sz_h_4large md:text-c_text_sz_h_xlarge","font-semibold leading-tight","")}>
-            Silahkan Daftar!
-          </div>
-          <div className={cx("col-span-8","text-center font-semibold text-c_text_sz_body text-gray-700")}>
-            Sudah Punya Akun?&nbsp;<Link to={{pathname:'/login'}} className={cx("font-semibold text-c_green_2")}>Masuk</Link>
-          </div>
-          <form className={cx("col-span-8 md:col-start-2 md:col-span-6 lg:col-start-3 lg:col-span-4","px-8 pt-8 pb-8 mb-4")}>
-            <InputValidate 
-              labelText={'Masukan Nama'}
-              onChange={this.handleChange}
-              value={nama} 
-              name={'nama'} 
-              id={'namaValidate'} 
-              type={'nama'}
-              autoComplete={'off'} 
-              placeholder={'Masukan Nama'}
-              passCondition={namaValidate}
-              notPassCondition={!namaValidate}
-              passValidateText={'Nama is valid'}
-              notPassValidateText={'Nama length must greater then or equal 4'}
-              passOutlineColor={''}
-              notPassOutlineColor={''}
-              appendWrapperClassName={''}
-              overrideWrapperClassName={false}
-              appendLabelClassName={''}
-              overrideLabelClassName={false}
-              appendInputClassName={''}
-              overrideInputClassName={false}
-            />
-            <InputValidate 
-              labelText={'Masukan Nomor Telepon atau Email'}
-              onChange={this.handleChange}
-              value={email} 
-              name={'email'} 
-              id={'emailValidate'} 
-              type={'email'}
-              autoComplete={'off'} 
-              placeholder={'Silahkan masukan nomor telepon atau email'}
-              passCondition={emailValidate}
-              notPassCondition={!emailValidate}
-              passValidateText={'Email is valid'}
-              notPassValidateText={'Email is invalid'}
-              passOutlineColor={''}
-              notPassOutlineColor={''}
-              appendWrapperClassName={''}
-              overrideWrapperClassName={false}
-              appendLabelClassName={''}
-              overrideLabelClassName={false}
-              appendInputClassName={''}
-              overrideInputClassName={false}
-            />
-            <div className={cx("w-full","mt-4")}>
-              <button onClick={this.doRegister} className={cx("w-full bg-c_blue_3 hover:bg-blue-700 text-c_text_sz_h_reguler text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline")} type="button">
-                Daftar
-              </button>
-              <div className={cx("my-2 text-center")}>atau daftar dengan</div>
-              <button className={cx("w-full bg-c_blue_facebook_1 hover:bg-blue-700 text-c_text_sz_h_reguler text-white font-bold py-2 px-4 mb-4 rounded focus:outline-none focus:shadow-outline")} type="button">
-                Facebook
-              </button>
-              <button className={cx("w-full bg-c_red_google_1 hover:bg-red-700 text-c_text_sz_h_reguler text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline")} type="button">
-                Google
-              </button>
+      <PageWrapper breadcrumbs={[
+        {
+          name: 'Home',
+          nav: '/'
+        },
+        {
+          name: 'Register',
+          nav: '/register'
+        },
+      ]}>
+        <div className={cx("container pt-12")}>
+          <div className={cx("grid grid-cols-8 gap-0")}>
+            <div className={cx("col-span-8","text-center text-c_text_sz_h_4large md:text-c_text_sz_h_xlarge","font-semibold leading-tight","")}>
+              Silahkan Daftar!
             </div>
-          </form>
-          <p className={cx("col-start-1 col-end-9","py-8","text-center text-gray-500 text-xs")}>
-            &copy;2020 Octopus Template. All rights reserved.
-          </p>
+            <div className={cx("col-span-8","text-center font-semibold text-c_text_sz_body text-gray-700")}>
+              Sudah Punya Akun?&nbsp;<Link to={{pathname:'/login'}} className={cx("font-semibold text-c_green_2")}>Masuk</Link>
+            </div>
+            <form className={cx("col-span-8 md:col-start-2 md:col-span-6 lg:col-start-3 lg:col-span-4","px-8 pt-8 pb-8 mb-4")}>
+              <InputValidate 
+                labelText={'Masukan Nama'}
+                onChange={this.handleChange}
+                value={nama} 
+                name={'nama'} 
+                id={'namaValidate'}
+                type={'nama'}
+                autoComplete={'off'} 
+                placeholder={'Masukan Nama'}
+                passCondition={namaValidate}
+                notPassCondition={!namaValidate}
+                passValidateText={'Nama is valid'}
+                notPassValidateText={'Nama length must greater then or equal 4'}
+                passOutlineColor={''}
+                notPassOutlineColor={''}
+                appendWrapperClassName={''}
+                overrideWrapperClassName={false}
+                appendLabelClassName={''}
+                overrideLabelClassName={false}
+                appendInputClassName={''}
+                overrideInputClassName={false}
+              />
+              <InputValidate 
+                labelText={'Masukan Nomor Telepon'}
+                onChange={this.handleChange}
+                value={nomor} 
+                name={'nomor'} 
+                id={'nomorValidate'} 
+                type={'number'}
+                autoComplete={'off'} 
+                placeholder={'Silahkan masukan nomor telepon'}
+                passCondition={nomorValidate}
+                notPassCondition={!nomorValidate}
+                passValidateText={'Nomor is valid'}
+                notPassValidateText={'Nomor is invalid'}
+                passOutlineColor={''}
+                notPassOutlineColor={''}
+                appendWrapperClassName={''}
+                overrideWrapperClassName={false}
+                appendLabelClassName={''}
+                overrideLabelClassName={false}
+                appendInputClassName={''}
+                overrideInputClassName={false}
+              />
+              <InputValidate 
+                labelText={'Masukan Email'}
+                onChange={this.handleChange}
+                value={email} 
+                name={'email'} 
+                id={'emailValidate'} 
+                type={'email'}
+                autoComplete={'off'} 
+                placeholder={'Silahkan masukan email'}
+                passCondition={emailValidate}
+                notPassCondition={!emailValidate}
+                passValidateText={'Email is valid'}
+                notPassValidateText={'Email is invalid'}
+                passOutlineColor={''}
+                notPassOutlineColor={''}
+                appendWrapperClassName={''}
+                overrideWrapperClassName={false}
+                appendLabelClassName={''}
+                overrideLabelClassName={false}
+                appendInputClassName={''}
+                overrideInputClassName={false}
+              />
+              <div className={cx("w-full","mt-4")}>
+                <button onClick={this.doRegister} className={cx("w-full bg-c_blue_3 hover:bg-blue-700 text-c_text_sz_h_reguler text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline")} type="button">
+                  Daftar
+                </button>
+                <div className={cx("my-2 text-center")}>atau daftar dengan</div>
+                <button className={cx("w-full bg-c_blue_facebook_1 hover:bg-blue-700 text-c_text_sz_h_reguler text-white font-bold py-2 px-4 mb-4 rounded focus:outline-none focus:shadow-outline")} type="button">
+                  Facebook
+                </button>
+                <button className={cx("w-full bg-c_red_google_1 hover:bg-red-700 text-c_text_sz_h_reguler text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline")} type="button">
+                  Google
+                </button>
+              </div>
+            </form>
+            <p className={cx("col-start-1 col-end-9","py-8","text-center text-gray-500 text-xs")}>
+              &copy;2020 Octopus Template. All rights reserved.
+            </p>
+          </div>
         </div>
-      </div>
+      </PageWrapper>
     )
   }
 }

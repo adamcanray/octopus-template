@@ -5,38 +5,38 @@
 
 import React, { Component } from 'react'
 import cx from 'classnames'
-import {Link,Redirect,withRouter} from 'react-router-dom'
-import jwt from 'jsonwebtoken'
+import {Link,withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 // import ReactPlayer from 'react-player'
-import config from '../../config'
-import {toDash} from '../../functions'
+import {toDash} from 'functions'
 import './LandingPage.scss'
 import {
   images,
   kategori,
-  //newProducts,
+  // newProducts,
   mostWantedProducts,
   recommendedProducts,
   searchResultProducts,
   flashSaleProduct
 } from './data'
-import SliderComponent from '../../components/SliderComponent/SliderComponent'
-import CardProduct from '../../components/CardProduct/CardProduct'
-import Card from '../../components/Card/Card'
+import SliderComponent from 'components/SliderComponent/SliderComponent'
+import CardProduct from 'components/CardProduct/CardProduct'
+import Card from 'components/Card/Card'
 
+import {ReactComponent as IconRightArrow} from 'icons/icon-right-arrow-1.svg'
 
-import {ReactComponent as IconRightArrow} from '../../icons/icon-right-arrow-1.svg'
+import {getProducts} from 'store/actions/Products'
 
 class LandingPage extends Component {
-  static isAuthenticated(token) {
-    if (!token) return
-    const date = new Date().getTime() / 1000
-    const data = jwt.decode(token)
-    console.log(token)
-    console.log(data)
-    /* allow anyone if config.isBackend still False */
-    return config.isBackend?date < data.exp:true
-  }
+  // static isAuthenticated(token) {
+  //   if (!token) return
+  //   const date = new Date().getTime() / 1000
+  //   const data = jwt.decode(token)
+  //   console.log(token)
+  //   console.log(data)
+  //   /* allow anyone if config.isBackend still False */
+  //   return config.isBackend?date < data.exp:true
+  // }
   constructor(props){
     super(props)
     this.state = {
@@ -44,14 +44,20 @@ class LandingPage extends Component {
       password: "",
     }
   }
+  componentDidMount(){
+    this.props.getProducts(1)
+  }
   render() {
-    const { from } = this.props.location.state || {
-      from: { pathname: "/app" }
-    } // eslint-disable-line
-    if (LandingPage.isAuthenticated(localStorage.getItem("token"))) {
-      return <Redirect to={from} />;
-    }
+    // const { from } = this.props.location.state || {
+    //   from: { pathname: "/app" }
+    // } // eslint-disable-line
+    // if (LandingPage.isAuthenticated(localStorage.getItem("token"))) {
+    //   return <Redirect to={from} />;
+    // }
     console.log(this.props)
+    const {
+      Products
+    } = this.props
     return (
       <div className={cx("container")}>
         <div className={cx("w-full","hidden md:block")}>
@@ -88,7 +94,7 @@ class LandingPage extends Component {
             {
               kategori.map((item,index)=>{
                 return (
-                  <Link to={item.link} className={cx("col-span-2")}>
+                  <Link to={item.link} className={cx("col-span-2")} key={index}>
                     <div key={index} className={cx(
                       "c_gradient_bg_2 rounded-md","font-semibold",
                       "text-center c_text_sz_body lg:c_text_sz_h_small xl:text-c_text_sz_h_reguler text-c_gray_5","px-2 py-2",
@@ -109,7 +115,6 @@ class LandingPage extends Component {
             "overflow-x-auto lg:overflow-x-auto",
           )}>
             <CardProduct
-              className={cx("px-3")}
               key={1}
               id={1}
               imgUrl={flashSaleProduct[0].imgUrl}
@@ -121,9 +126,9 @@ class LandingPage extends Component {
             />
             {
               flashSaleProduct.map((item,index)=>{
+              //(Products || []).map((item,index)=>{
                 return (
                   <CardProduct
-                    className={cx("px-3")}
                     key={index}
                     id={item.id}
                     link={`/${toDash(item.kategori.name)}/${toDash(item.productName)}`}
@@ -162,7 +167,6 @@ class LandingPage extends Component {
             "overflow-x-auto lg:overflow-x-auto",
           )}>
             <CardProduct
-              className={cx("px-3")}
               key={1}
               id={1}
               imgUrl={flashSaleProduct[0].imgUrl}
@@ -176,7 +180,6 @@ class LandingPage extends Component {
               flashSaleProduct.map((item,index)=>{
                 return (
                   <CardProduct
-                    className={cx("px-3")}
                     key={index}
                     id={item.id}
                     link={`/${toDash(item.kategori.name)}/${toDash(item.productName)}`}
@@ -212,9 +215,9 @@ class LandingPage extends Component {
           <div className={cx("custome-scrollbar","flex justify-start lg:flex-wrap lg:justify-center","overflow-x-auto lg:overflow-x-auto")}>
             {
               mostWantedProducts.map((item,index)=>{
+              //(Products || []).map((item,index)=>{
                 return (
                   <CardProduct
-                    className={cx("px-3")}
                     key={index}
                     id={item.id}
                     link={`/${toDash(item.kategori.name)}/${toDash(item.productName)}`}
@@ -249,7 +252,6 @@ class LandingPage extends Component {
               recommendedProducts.map((item,index)=>{
                 return (
                   <CardProduct
-                    className={cx("px-3")}
                     key={index}
                     id={item.id}
                     link={`/${toDash(item.kategori.name)}/${toDash(item.productName)}`}
@@ -320,7 +322,6 @@ class LandingPage extends Component {
               searchResultProducts.map((item,index)=>{
                 return (
                   <CardProduct
-                    className={cx("px-3")}
                     key={index}
                     id={item.id}
                     link={`/${toDash(item.kategori.name)}/${toDash(item.productName)}`}
@@ -342,4 +343,23 @@ class LandingPage extends Component {
   }
 }
 
-export default withRouter(LandingPage)
+export default withRouter(
+// export default 
+  connect(
+    /*
+    * import exits reducers from store.store
+    */ 
+    store=>({
+      getRequest: store.Products.getRequest,
+      getSuccess: store.Products.getSuccess,
+      getError: store.Products.getError,
+      Products: store.Products.getData,
+    }),
+    {
+      /*
+      * import actions from store.actions
+      */
+      getProducts,
+    },
+  )(LandingPage)
+)

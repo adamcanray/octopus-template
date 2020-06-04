@@ -17,7 +17,13 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
+  "__comment1": "type `npm run-script start-json-server` to start json-server and use db.json as databases",
+  "__comment2": "type `npm run-script generate-data` to generate dummy data use faker then store to db.json",
+  "__comment3": "type `npm run-script start-auth` to run server for authenticate login users with jsonwebtoken",
   "scripts": {
+    "start-json-server": "json-server --watch -p 8000 db.json",
+    "generate-data": "node generateData.js > db.json",
+    "start-auth": "node server.js",
     "build:css": "postcss src/styles/index.tailwind.css -o src/styles/index.css",
     "watch:css": "postcss src/styles/index.tailwind.css -o src/styles/index.css -w",
     "start": "concurrently \"npm run watch:css\" \"react-scripts start\"",
@@ -45,16 +51,18 @@
     "@emotion/styled": "^10.0.27",
     "autoprefixer": "^9.7.6",
     "concurrently": "^5.2.0",
+    "faker": "^4.1.0",
+    "json-server": "^0.16.1",
     "node-sass": "^4.14.1",
     "postcss-cli": "^7.1.1",
     "react-emotion": "^10.0.0",
-    "react-image-magnify": "^2.7.4",
     "react-modal": "^3.11.2",
     "react-player": "^2.0.1",
     "react-rating": "^2.0.5",
     "react-router-dom": "^5.2.0",
     "react-truncate": "^2.4.0",
     "slick-carousel": "^1.8.1",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.4.6",
+    "validator": "^13.0.0"
   }
 }

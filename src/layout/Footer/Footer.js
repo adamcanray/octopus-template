@@ -95,7 +95,7 @@ class Footer extends Component {
     ]
     const titleColFour = `Profile Kami`
     return (
-      <div className={cx("border-c_gray_4 border-t border-b"," mt-12 pt-10 pb-4 mb-10")}>
+      <div className={cx("border-c_gray_4 border-t border-b"," mt- pt-10 pb-4 mb-10")}>
         <div className={cx("container")}>
         <div className={cx("grid grid-cols-9 sm:grid-cols-8 gap-4")}>
           <div className={cx("col-span-3 sm:col-span-2 bg-gray-0","")}>
